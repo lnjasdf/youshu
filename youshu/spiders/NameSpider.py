@@ -34,7 +34,8 @@ class NameSpider(scrapy.Spider):
     def build_item(book):
         item = YoushuItem()
         item['name'] = book.xpath('.//div[@class="title"]/a/text()').extract()[0]
-        item['link'] = book.xpath('.//div[@class="title"]/a/@href').extract()[0]
+        link = book.xpath('.//div[@class="title"]/a/@href').extract()[0]
+        item['book_id'] = int(link[6:])
         info = book.xpath('.//div[@class="abstract"]/text()').extract()
         item['author'] = info[0]
         item['words'] = info[1]

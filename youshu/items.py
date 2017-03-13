@@ -11,8 +11,8 @@ import scrapy
 class YoushuItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    book_id = scrapy.Field()
     name = scrapy.Field()
-    link = scrapy.Field()
     author = scrapy.Field()
     words = scrapy.Field()
     last_time = scrapy.Field()
