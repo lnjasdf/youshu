@@ -9,4 +9,4 @@ cmd = "scrapy crawl {0}".format(name)
 # save to file
 cmd2 = "scrapy crawl {0} -o {0}.csv".format(name)
 
-cmdline.execute(cmd2.split())
+cmdline.execute(cmd.split())

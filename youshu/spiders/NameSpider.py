@@ -3,6 +3,8 @@ import scrapy
 from youshu.items import YoushuItem
 import time
 import random
+from youshu.logger import *
+from youshu import config
 
 
 class NameSpider(scrapy.Spider):
@@ -20,9 +22,10 @@ class NameSpider(scrapy.Spider):
     }
 
     def start_requests(self):
-        yield scrapy.Request(self.start_url + str(1), headers=self.headers)
+        yield scrapy.Request(self.start_url + str(config.START_PAGE), headers=self.headers)
 
     def parse(self, response):
+        logger.info(response.url)
         books = response.xpath('//div[@class="booklist-item"]')
         for book in books:
             item = NameSpider.build_item(book)
@@ -52,7 +55,7 @@ class NameSpider(scrapy.Spider):
             return None
         if current_page < last_page:
             second = random.randint(2, 10)  # 爬一页随机休息
-            print "sleep: %d" % (second,)
+            logger.info("sleep: %d" % (second,))
             time.sleep(second)
             return NameSpider.start_url + str(current_page + 1)
         return None
