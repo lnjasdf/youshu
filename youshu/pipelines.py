@@ -12,8 +12,7 @@ class YoushuPipeline(object):
     def process_item(self, item, spider):
         if type(item) is YoushuItem:
             session = sql.DBSession()
-            info = sql.Info(book_id=item['book_id'], name=item['name'], author=item['author'],
-                            words=item['words'], last_time=item['last_time'])
+            info = sql.Info(**item)  # item 可以直接当dict解包
             session.add(info)
             session.commit()
             session.close()

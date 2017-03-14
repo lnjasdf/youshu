@@ -16,3 +16,15 @@ class YoushuItem(scrapy.Item):
     author = scrapy.Field()
     words = scrapy.Field()
     last_time = scrapy.Field()
+
+
+if __name__ == '__main__':
+    item = YoushuItem()
+    item['book_id'] = 111
+    item['name'] = 'aaa'
+    item['author'] = 'bbb'
+    item['words'] = 'ccc'
+    item['last_time'] = 'ddd'
+    print item
+    print dict(item)
+
