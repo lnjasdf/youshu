@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from youshu.items import YoushuItem
-import time,random
+import time
+import random
 
 
 class NameSpider(scrapy.Spider):
