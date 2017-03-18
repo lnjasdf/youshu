@@ -51,8 +51,8 @@ class NameSpider(scrapy.Spider):
         next_script = response.xpath('//ul[@class="pagination pull-right"]/li[last()]/a/@onclick').extract()[0]
         last_page = int(next_script[next_script.find(',') + 1:next_script.find(')')])
         current_page = int(response.url[response.url.find('=') + 1:])
-        if current_page == 5:  # TODO 测试5页
-            return None
+        #if current_page == 5:  # TODO 测试5页
+        #    return None
         if current_page < last_page:
             second = random.randint(2, 10)  # 爬一页随机休息
             logger.info("sleep: %d" % (second,))
